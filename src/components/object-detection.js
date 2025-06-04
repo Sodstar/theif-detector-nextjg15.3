@@ -1,10 +1,10 @@
 "use client";
 
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
-import {load as cocoSSDLoad} from "@tensorflow-models/coco-ssd";
+import { load as cocoSSDLoad } from "@tensorflow-models/coco-ssd";
 import * as tf from "@tensorflow/tfjs";
-import {renderPredictions} from "@/utils/render-predictions";
+import { renderPredictions } from "@/utils/render-predictions";
 
 let detectInterval;
 
@@ -48,7 +48,8 @@ const ObjectDetection = () => {
 
       // Filter only persons
       const personObjects = detectedObjects.filter(
-        (detection) => detection.class === "cell phone" || detection.class === "laptop"
+        (detection) =>
+          detection.class === "cell phone" || detection.class === "laptop"
       );
 
       const context = canvasRef.current.getContext("2d");
@@ -72,9 +73,9 @@ const ObjectDetection = () => {
   useEffect(() => {
     const cleanup = runCoco();
     showmyVideo();
-    
+
     return () => {
-      cleanup.then(cleanupFn => cleanupFn && cleanupFn());
+      cleanup.then((cleanupFn) => cleanupFn && cleanupFn());
       clearInterval(detectInterval);
     };
   }, [detectionActive, confidenceThreshold]);
@@ -93,12 +94,16 @@ const ObjectDetection = () => {
                 onChange={() => setDetectionActive(!detectionActive)}
               />
               <div className="relative w-11 h-6 bg-gray-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-purple-500 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
-              <span className="ms-3 text-sm font-medium text-gray-300">Идэвхтэй</span>
+              <span className="ms-3 text-sm font-medium text-gray-300">
+                Идэвхтэй
+              </span>
             </label>
           </div>
         </div>
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-300 mb-2">Илрүүлэлтийн Босго/Threshold: {confidenceThreshold}</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            Илрүүлэлтийн Босго/Threshold: {confidenceThreshold}
+          </label>
           <input
             type="range"
             min="0.1"
@@ -110,7 +115,7 @@ const ObjectDetection = () => {
           />
         </div>
       </div>
-      
+
       {isLoading ? (
         <div className="flex flex-col items-center justify-center bg-gray-800 rounded-lg p-10 shadow-lg">
           <div className="w-16 h-16 border-4 border-t-purple-500 border-r-transparent border-b-purple-500 border-l-transparent rounded-full animate-spin"></div>
@@ -122,11 +127,7 @@ const ObjectDetection = () => {
         <div className="relative rounded-lg overflow-hidden shadow-2xl">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
           {/* webcam */}
-          <Webcam
-            ref={webcamRef}
-            className="w-full rounded-lg"
-            muted
-          />
+          <Webcam ref={webcamRef} className="w-full rounded-lg" muted />
           {/* canvas */}
           <canvas
             ref={canvasRef}
