@@ -48,7 +48,7 @@ const ObjectDetection = () => {
 
       // Filter only persons
       const personObjects = detectedObjects.filter(
-        (detection) => detection.class === "knife"
+        (detection) => detection.class === "cell phone" || detection.class === "laptop
       );
 
       const context = canvasRef.current.getContext("2d");
