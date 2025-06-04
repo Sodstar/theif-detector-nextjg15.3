@@ -120,7 +120,7 @@ const ObjectDetection = () => {
         <div className="flex flex-col items-center justify-center bg-gray-800 rounded-lg p-10 shadow-lg">
           <div className="w-16 h-16 border-4 border-t-purple-500 border-r-transparent border-b-purple-500 border-l-transparent rounded-full animate-spin"></div>
           <p className="mt-4 text-xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
-            Моделийн дуудаж байна...
+            Моделийн дуудаж байна түр хүлээнэ үү...
           </p>
         </div>
       ) : (
