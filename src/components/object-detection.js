@@ -84,7 +84,7 @@ const ObjectDetection = () => {
     <div className="space-y-6">
       <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-white">Түвшин</h2>
+          <h2 className="text-xl font-semibold text-white">Босго</h2>
           <div className="flex items-center space-x-3">
             <label className="inline-flex items-center cursor-pointer">
               <input
