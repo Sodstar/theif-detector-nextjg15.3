@@ -1,4 +1,4 @@
-import {throttle} from "lodash";
+import { throttle } from "lodash";
 
 export const renderPredictions = (predictions, ctx) => {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -11,14 +11,14 @@ export const renderPredictions = (predictions, ctx) => {
   predictions.forEach((prediction) => {
     const [x, y, width, height] = prediction["bbox"];
     const isPerson = prediction.class === "person";
-    
+
     // Calculate confidence percentage
     const confidenceScore = (prediction.score * 100).toFixed(1);
 
     // Modern bounding box with rounded corners
     ctx.lineWidth = 3;
     ctx.strokeStyle = isPerson ? "rgba(255, 0, 128, 0.8)" : "#00FFFF";
-    
+
     // Draw rounded rectangle
     const radius = 8;
     ctx.beginPath();
@@ -48,11 +48,22 @@ export const renderPredictions = (predictions, ctx) => {
     const textWidth = ctx.measureText(label).width;
     const textHeight = 24;
     const padding = 8;
-    
+
     // Label background with rounded corners
-    ctx.fillStyle = isPerson ? "rgba(255, 0, 128, 0.85)" : "rgba(0, 255, 255, 0.85)";
-    roundRect(ctx, x, y - textHeight - padding, textWidth + padding * 2, textHeight + padding, 6, true, false);
-    
+    ctx.fillStyle = isPerson
+      ? "rgba(255, 0, 128, 0.85)"
+      : "rgba(0, 255, 255, 0.85)";
+    roundRect(
+      ctx,
+      x,
+      y - textHeight - padding,
+      textWidth + padding * 2,
+      textHeight + padding,
+      6,
+      true,
+      false
+    );
+
     // Label text
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(label, x + padding, y - textHeight - padding / 2);
@@ -86,6 +97,6 @@ function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
 
 const playAudio = throttle(() => {
   const audio = new Audio("/alarm.wav");
-  audio.volume = 0.7;  // Reduce volume slightly
+  audio.volume = 0.7; // Reduce volume slightly
   audio.play();
 }, 2000);
