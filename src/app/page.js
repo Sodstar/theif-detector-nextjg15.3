@@ -10,7 +10,7 @@ export default function Home() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 tracking-tight">
-            Объект илрүүлэх AI систем
+            Объект илрүүлэх AI систем.
           </h1>
           <p className="mt-3 text-xl text-gray-300 max-w-3xl mx-auto">
             Дүрс таних технологи ашиглан камерийн тусламжтайгаар аюул тарих магадлалтай эд зүйлсийг илрүүлж, аюулгүй байдлыг хангах зорилготой.
